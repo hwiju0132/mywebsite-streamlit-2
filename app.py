@@ -9,8 +9,8 @@ cur = con.cursor()
 def login_user(id,pw):
     cur.execute(f"SELECT * FROM users WHERE id = '{id}' and pwd = '{pw}'")
     return cur.fetchone()
-
-
+st.sidebar.title('박주휘 데이터베이스')
+st.title('박주휘 데이터베이스')
 menu = st.sidebar.selectbox('MENU', options=['로그인', '회원가입', '회원목록'])
 
 if menu == '로그인':
@@ -51,6 +51,9 @@ if menu == '회원가입':
                         f"'{in_id}', '{in_pwd}', '{in_name}')")
             con.commit()
 if menu == '회원목록':
-    
+
     df = pd.read_sql("SELECT * FROM users", con)
     st.dataframe(df)
+
+
+
